@@ -1,7 +1,6 @@
 @use './Variables.scss' as *;
 @use './index.scss';
 
-// HEADER SECTION
 .App{
     display: flex;
     flex-direction: column;
@@ -10,7 +9,7 @@
     width: 100%;
     background-color: $purple;
     
-
+    // HEADER SECTION
     .heading{
         text-align: center;
         font-size: 2.5rem;
