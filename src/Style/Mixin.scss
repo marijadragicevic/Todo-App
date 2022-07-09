@@ -4,3 +4,15 @@
     justify-content: $justifyContent;
     flex-direction:$direction;
 };
+
+@mixin proba($width:null,$padding:null,$size:null, $radius:null,$color:null, $backColor:null){
+    width:$width;
+    padding: $padding;
+    font-size: $size;
+    border-radius: $radius;
+    color:$color;
+    background-color: $backColor;
+    border:none;
+}
+
+
