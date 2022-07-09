@@ -1,13 +1,12 @@
 @use './Variables.scss' as *;
+@use './Mixin.scss' as *;
 @use './index.scss';
 
 .App{
     background-image: linear-gradient(to right bottom ,$pink,$darkPink);
 
     .container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include flex($alignItems:center,$direction:column);
         width: 100%;
         min-height: 100vh;
 
@@ -23,20 +22,20 @@
       
         // HEADER SECTION
         .heading{
-            text-align: center;
             z-index: 1;
             width: 100%;
+            color: $white;
             font-size: 2.5em;
             font-weight: 500;
-            color: $white;
             padding: 0.3em 0em;
+            text-align: center;
             text-shadow: 0 0 5px $white;
         }
 
         // FORM SECTION
         .form{
-            display: flex;
-            align-items: center;
+            @include flex($alignItems:center);
+
             width: 95%;
             position: relative;
 
@@ -82,17 +81,15 @@
         // TODOS SECTION
         .todos{
             $self:".todos";
-            display: flex;
-            align-items: center;
-            flex-direction: column;
+            @include flex($alignItems:center,$direction:column);
+
             gap: 0.7em;
             width: 95%;
             margin: 1.5em 0em 2em;
 
             &__item{
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
+                @include flex($alignItems:flex-start,$justifyContent:space-between);
+
                 border-radius: 0.1em;
                 padding: 0.8em;
                 width: 100%;
@@ -118,8 +115,8 @@
 
                 #{$self}__icons{
                     align-self: flex-start;
-                    display: flex;
-                    flex-direction: column;
+
+                    @include flex($direction:column);
 
                     #{$self}__icon{
                         color:rgba($color: $darkPink, $alpha: 0.5);
