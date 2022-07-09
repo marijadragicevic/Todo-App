@@ -1,28 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Style/App.scss';
-import Header from './Components/Header';
-import Form from './Components/Form';
-import { Todo } from './Components/model';
-import TodoList from './Components/TodoList';
+import { Header, Form, TodoList } from './Components/index';
+import ContextProvider from './Context/Contex';
 
 const App: React.FC = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  const handleAdd = (e: React.FormEvent, todo: string) => {
-    e.preventDefault();
-    if (todo) {
-      setTodos([...todos, { id: Date.now(), todo: todo, isDone: false }]);
-    }
-  }
-
 
   return (
     <div className="App">
+
       <div className='container'>
-        <Header />
-        <Form handleAdd={handleAdd} />
-        <TodoList todos={todos} setTodos={setTodos} />
+        <ContextProvider>
+          <Header />
+          <Form />
+          <TodoList />
+        </ContextProvider>
       </div>
+
     </div>
   );
 }

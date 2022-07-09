@@ -1,16 +1,26 @@
-import React from 'react';
-import { Todo } from './model';
+import React, { useContext, useEffect } from 'react';
+import { Context } from '../Context/Contex';
 import TodoItem from './TodoItem';
 
-type Props = {
-    todos: Todo[],
-    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
-}
 
-const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
+const TodoList: React.FC = () => {
+
+    // destructuring and get access to todos and dispatch using Context
+    const { todos } = useContext(Context);
+
+    useEffect(() => {
+
+        // need to stringify data that need to be set in localStorage
+        localStorage.setItem("todos", JSON.stringify(todos));
+
+    }, [todos.length]);
+
+    console.log(localStorage.todos);
+
+
     return <div className='todos'>
         {todos.map(todo => (
-            <TodoItem todo={todo} key={todo.id} todos={todos} setTodos={setTodos} />
+            <TodoItem todo={todo} key={todo.id} />
         ))}
     </div>
 }
